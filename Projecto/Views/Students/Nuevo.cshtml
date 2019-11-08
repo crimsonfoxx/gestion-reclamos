@@ -1,4 +1,4 @@
-﻿@model Projecto.Models.ViewModels.Tabla2ViewModel
+﻿@model Projecto.Models.ViewModels.StudentsViewModel
 @{
     ViewBag.Title = "Nuevo";
 }
@@ -22,9 +22,17 @@
             </div>
             <br />
             <div>
-                @Html.LabelFor(d => d.Campus)
-                @Html.TextBoxFor(d => d.Campus, "", new { @class = "form-control" })
+                @Html.LabelFor(d => d.Campus)<br />
+                @Html.RadioButtonFor(d => d.Campus, 1)
+                <span>Campus 1</span><br />
+
+                @Html.RadioButtonFor(d => d.Campus, 2)
+                <span>Campus 2</span><br />
+
                 @Html.ValidationMessageFor(d => d.Campus, null, new { @class = "red " })
+                @*@Html.LabelFor(d => d.Campus)
+            @Html.TextBoxFor(d => d.Campus, "", new { @class = "form-control" })
+            @Html.ValidationMessageFor(d => d.Campus, null, new { @class = "red " })*@
             </div>
             <br />
             <div>
@@ -38,11 +46,17 @@
                 @Html.EditorFor(d => d.Fecha, "", new { @class = "form-control" })
                 @Html.ValidationMessageFor(d => d.Fecha, null, new { @class = "red" })
             </div>
-            <br />        
+            <br />
             <div>
                 @Html.LabelFor(d => d.Estatus)
                 @Html.TextBoxFor(d => d.Estatus, "", new { @class = "form-control" })
                 @Html.ValidationMessageFor(d => d.Estatus, null, new { @class = "red " })
+            </div>
+            <div>
+                @if (ViewBag.ErrorMessage != null)
+                {
+                    <h3 style="color:red">@ViewBag.ErrorMessage</h3>
+                }
             </div>
             <br />
             <div style="text-align:right">

@@ -18,7 +18,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="matricula" Type="int" Nullable="false" />
+          <Property Name="matricula" Type="varchar" MaxLength="9" Nullable="false" />
           <Property Name="campus" Type="int" Nullable="false" />
           <Property Name="queja" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Fecha" Type="datetime" Nullable="false" />
@@ -30,7 +30,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="matricula" Type="int" Nullable="false" />
+          <Property Name="matricula" Type="varchar" MaxLength="9" Nullable="false" />
           <Property Name="campus" Type="int" Nullable="false" />
           <Property Name="queja" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Fecha" Type="datetime" Nullable="false" />
@@ -42,7 +42,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="text" Nullable="false" />
-          <Property Name="matricula" Type="int" Nullable="false" />
+          <Property Name="matricula" Type="text" Nullable="false" />
           <Property Name="campus" Type="int" Nullable="false" />
           <Property Name="queja" Type="nvarchar(max)" Nullable="false" />
           <Property Name="fecha" Type="date" Nullable="false" />
@@ -63,7 +63,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="matricula" Type="Int32" Nullable="false" />
+          <Property Name="matricula" Type="String" MaxLength="9" Nullable="false" />
           <Property Name="campus" Type="Int32" Nullable="false" />
           <Property Name="queja" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
@@ -75,7 +75,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="matricula" Type="Int32" Nullable="false" />
+          <Property Name="matricula" Type="String" MaxLength="9" Nullable="false" />
           <Property Name="campus" Type="Int32" Nullable="false" />
           <Property Name="queja" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
@@ -87,7 +87,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="matricula" Type="Int32" Nullable="false" />
+          <Property Name="matricula" Type="String" MaxLength="9" Nullable="false" />
           <Property Name="campus" Type="Int32" Nullable="false" />
           <Property Name="queja1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />

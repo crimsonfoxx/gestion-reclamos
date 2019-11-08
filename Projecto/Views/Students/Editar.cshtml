@@ -1,4 +1,5 @@
-﻿@model Projecto.Models.ViewModels.Tabla2ViewModel
+﻿@model Projecto.Models.ViewModels.StudentsViewModel
+@using Projecto.Models
 @{
     ViewBag.Title = "Editar";
 }
@@ -23,9 +24,17 @@
             </div>
             <br />
             <div>
-                @Html.LabelFor(d => d.Campus)
-                @Html.TextBoxFor(d => d.Campus, "", new { @class = "form-control" })
+                @Html.LabelFor(d => d.Campus)<br />
+                @Html.RadioButtonFor(d => d.Campus, 1)
+                <span>Campus 1</span><br />
+
+                @Html.RadioButtonFor(d => d.Campus, 2)
+                <span>Campus 2</span><br />
+
                 @Html.ValidationMessageFor(d => d.Campus, null, new { @class = "red " })
+                @*@Html.LabelFor(d => d.Campus)
+        @Html.TextBoxFor(d => d.Campus, "", new { @class = "form-control" })
+        @Html.ValidationMessageFor(d => d.Campus, null, new { @class = "red " })*@
             </div>
             <br />
             <div>
@@ -36,7 +45,8 @@
             <br />
             <div>
                 @Html.LabelFor(d => d.Fecha)<br />
-                @Html.EditorFor(d => d.Fecha, "", new { @class = "form-control" })
+                @*@Html.EditorFor(d => d.Fecha, "", new { @class = "form-control" })*@
+                @Html.TextBoxFor(d => d.Fecha, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" })
                 @Html.ValidationMessageFor(d => d.Fecha, null, new { @class = "red" })
             </div>
             <br />
@@ -44,6 +54,12 @@
                 @Html.LabelFor(d => d.Estatus)<br />
                 @Html.EditorFor(d => d.Estatus, "", new { @class = "form-control" })
                 @Html.ValidationMessageFor(d => d.Estatus, null, new { @class = "red" })
+            </div>
+            <div>
+                @if (ViewBag.ErrorMessage != null)
+                {
+                    <h3 style="color:red">@ViewBag.ErrorMessage</h3>
+                }
             </div>
             <br />
             <div style="text-align:right">
