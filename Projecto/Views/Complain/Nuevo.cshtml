@@ -1,10 +1,12 @@
 ﻿@model Projecto.Models.ViewModels.TablaViewModel
+@using Projecto.Models.ViewModels
 @{
     ViewBag.Title = "Nuevo";
 }
 
 <h2>Nueva Queja</h2>
-
+<p>Tenga en cuenta que cualquier queja/denuncia sera borrada si no detalla el problema de manera 
+    clara o contiene lenguaje ofensivo u obseno.</p>
 @using (Html.BeginForm("Nuevo", "Complain", FormMethod.Post))
 {
     <div class="row">
@@ -23,8 +25,7 @@
             <br />
             <div>
                 @Html.LabelFor(d => d.Campus)
-                @Html.TextBoxFor(d => d.Campus, "", new { @class = "form-control" })
-                @Html.ValidationMessageFor(d => d.Campus, null, new { @class = "red " })
+                @Html.EnumDropDownListFor(d => d.Campus, new { @class = "form-control" })
             </div>
             <br />
             <div>
@@ -35,7 +36,7 @@
             <br />
             <div>
                 @Html.LabelFor(d => d.Fecha)<br />
-                @Html.EditorFor(d => d.Fecha, "", new { @class = "form-control" })
+                @Html.EditorFor(d => d.Fecha, "", new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(d => d.Fecha, null, new { @class = "red" })
             </div>
             <br />

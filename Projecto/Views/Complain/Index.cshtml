@@ -3,6 +3,12 @@
     ViewBag.Title = "Quejas";
 }
 
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+
 <h2>Quejas</h2>
 
 <div class="row" style="text-align:right;padding:5px;">
@@ -27,11 +33,30 @@
                 <td>@oElemento.Matricula</td>
                 <td>@oElemento.Campus</td>
                 <td>@oElemento.Queja</td>
-                <td>@oElemento.Fecha</td>
+                <td>@oElemento.Fecha.ToShortDateString()</td>
                 <td>
-                    <a class="btn btn-default" href="~/Complain/Editar/@oElemento.Id">Editar</a>
-                    <a class="btn btn-danger" href="~/Complain/Eliminar/@oElemento.Id">Eliminar</a>
-                    <a class="btn btn-default" style="background-color:red">Mover</a>
+                    <a class="btn btn-default" href="~/Complain/Editar/@oElemento.Id" data-toggle="tooltip" title="Editar">
+                        <i class="far fa-edit"></i>
+                    </a>
+                    <a class="btn btn-danger" href="~/Complain/Eliminar/@oElemento.Id" data-toggle="tooltip" title="Eliminar">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                    <a class="btn btn-danger" style="background-color:gray" href="~/Complain/Mover/@oElemento.Id" data-toggle="tooltip" title="Enviar a Profesores">
+                        <i class="fas fa-users"></i>
+                    </a>
+                    <a class="btn btn-danger" style="background-color:gray" href="~/Complain/Mover2/@oElemento.Id" data-toggle="tooltip" title="Enviar a Plataforma Virtual">
+                        <i class="fas fa-atlas"></i>
+                    </a>
+                    <a class="btn btn-danger" style="background-color:gray" href="~/Complain/Mover3/@oElemento.Id" data-toggle="tooltip" title="Enviar a Decanato">
+                        <i class="fas fa-hotel"></i>
+                    </a>
+                    <a class="btn btn-danger" style="background-color:gray" href="~/Complain/Mover4/@oElemento.Id" data-toggle="tooltip" title="Enviar a Horarios">
+                        <i class="fas fa-hourglass-start"></i>
+                    </a>
+                    <a class="btn btn-danger" style="background-color:gray" href="~/Complain/Mover5/@oElemento.Id" data-toggle="tooltip" title="Enviar a Equipos">
+                        <i class="fas fa-tablet-alt"></i>
+                    </a>
+
                 </td>
             </tr>
         }

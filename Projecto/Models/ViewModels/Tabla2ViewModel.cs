@@ -6,6 +6,13 @@ using System.Web;
 
 namespace Projecto.Models.ViewModels
 {
+    public enum Estado
+    {
+        [Display(Name = "Activo")]
+        Activo,
+        [Display(Name = "Finalizado")]
+        Finalizado
+    }
     public class Tabla2ViewModel
     {
         public int Id { get; set; }
@@ -21,10 +28,9 @@ namespace Projecto.Models.ViewModels
         [Range(20170000, 20199999)]
         public int Matricula { get; set; }
 
-        [Required(ErrorMessage = "Solo se permiten los valores 1 y 2")]
         [Display(Name = "Campus")]
-        [Range(1, 2)]
-        public int Campus { get; set; }
+        [EnumDataType(typeof(Campus))]
+        public Campus Campus { get; set; }
 
         [Required(ErrorMessage = "Este campo es mandatorio")]
         [Display(Name = "Queja")]
@@ -36,10 +42,8 @@ namespace Projecto.Models.ViewModels
         [Display(Name = "Fecha en la que se creo")]
         public DateTime Fecha { get; set; }
 
-        [Required(ErrorMessage = "Este campo es mandatorio, solo se aceptan letras")]
-        [StringLength(50)]
-        [DataType(DataType.Text)]
-        [Display(Name = "Estatus")]
+        [Display(Name = "Estado")]
+        [EnumDataType(typeof(Estado))]
         public string Estatus { get; set; }
     }
 }

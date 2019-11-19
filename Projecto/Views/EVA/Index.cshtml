@@ -1,0 +1,39 @@
+﻿@model List<Projecto.Models.ViewModels.EVAViewModel>
+@{
+    ViewBag.Title = "Quejas relacionadas al EVA";
+}
+
+<h2>Quejas relacionadas al Eva</h2>
+
+<div class="col-md-12">
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Matricula</th>
+            <th>Campus</th>
+            <th>Queja</th>
+            <th>Fecha</th>
+            <th>Estatus</th>
+            <th></th>
+        </tr>
+        @foreach (var oElemento in Model)
+        {
+            <tr>
+                <td>@oElemento.Id</td>
+                <td>@oElemento.Nombre</td>
+                <td>@oElemento.Matricula</td>
+                <td>@oElemento.Campus</td>
+                <td>@oElemento.Queja</td>
+                <td>@oElemento.Fecha.ToShortDateString()</td>
+                <td>@oElemento.Estatus</td>
+                <td>
+                    <a class="btn btn-default" href="~/EVA/Editar/@oElemento.Id">Editar</a>
+                    <a class="btn btn-danger" href="~/EVA/Eliminar/@oElemento.Id">Eliminar</a>
+
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+

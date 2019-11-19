@@ -22,7 +22,7 @@ namespace Projecto.Controllers
                            Id = d.Id,
                            Nombre = d.Nombre,
                            Matricula = d.matricula,
-                           Campus = d.campus,
+                           Campus = (Campus)d.campus,
                            Queja = d.queja1,
                            Fecha = d.fecha
                        }).ToList();
@@ -48,12 +48,14 @@ namespace Projecto.Controllers
                 {
                     using (examenEntities db = new examenEntities())
                     {
-                        var oTabla = new queja();
-                        oTabla.Nombre = model.Nombre;
-                        oTabla.matricula = model.Matricula;
-                        oTabla.campus = model.Campus;
-                        oTabla.queja1 = model.Queja;
-                        oTabla.fecha = model.Fecha;
+                        var oTabla = new queja
+                        {
+                            Nombre = model.Nombre,
+                            matricula = model.Matricula,
+                            campus = (int)model.Campus,
+                            queja1 = model.Queja,
+                            fecha = model.Fecha
+                        };
 
                         db.quejas.Add(oTabla);
                         db.SaveChanges();
@@ -77,12 +79,12 @@ namespace Projecto.Controllers
                 var oTabla = db.quejas.Find(Id);
                 model.Nombre = oTabla.Nombre;
                 model.Matricula = oTabla.matricula;
-                model.Campus = oTabla.campus;
+                model.Campus = (Campus)oTabla.campus;
                 model.Queja = oTabla.queja1;
                 model.Fecha = oTabla.fecha;
                 model.Id = oTabla.Id;
             }
-                return View();
+                return View(model);
         }
 
 
@@ -98,7 +100,7 @@ namespace Projecto.Controllers
                         var oTabla = db.quejas.Find(model.Id);
                         oTabla.Nombre = model.Nombre;
                         oTabla.matricula = model.Matricula;
-                        oTabla.campus = model.Campus;
+                        oTabla.campus = (int)model.Campus;
                         oTabla.queja1 = model.Queja;
                         oTabla.fecha = model.Fecha;
 
@@ -127,9 +129,107 @@ namespace Projecto.Controllers
 
             }
             return Redirect("/Complain/");
+        }     
+
+        [HttpGet]
+        public ActionResult Mover(int Id)
+        {
+            using (examenEntities db = new examenEntities())
+            {
+                var foundRecord = db.quejas.Find(Id);
+                var typeCastRecord = new Estudiante();
+                typeCastRecord.Nombre = foundRecord.Nombre;
+                typeCastRecord.matricula = foundRecord.matricula;
+                typeCastRecord.campus = foundRecord.campus;
+                typeCastRecord.queja = foundRecord.queja1;
+                typeCastRecord.Fecha = foundRecord.fecha;
+                typeCastRecord.Estatus = "Activo";
+
+                db.Estudiantes.Add(typeCastRecord);
+                db.quejas.Remove(foundRecord);
+                db.SaveChanges();
+            }
+            return Redirect("/Complain/");
         }
+        [HttpGet]
+        public ActionResult Mover2(int Id)
+        {
+            using (examenEntities db = new examenEntities())
+            {
+                var foundRecord = db.quejas.Find(Id);
+                var typeCastRecord = new EVA();
+                typeCastRecord.Nombre = foundRecord.Nombre;
+                typeCastRecord.matricula = foundRecord.matricula;
+                typeCastRecord.campus = foundRecord.campus;
+                typeCastRecord.queja = foundRecord.queja1;
+                typeCastRecord.Fecha = foundRecord.fecha;
+                typeCastRecord.Estatus = "Activo";
 
-       
+                db.EVAs.Add(typeCastRecord);
+                db.quejas.Remove(foundRecord);
+                db.SaveChanges();
+            }
+            return Redirect("/Complain/");
+        }
+        [HttpGet]
+        public ActionResult Mover3(int Id)
+        {
+            using (examenEntities db = new examenEntities())
+            {
+                var foundRecord = db.quejas.Find(Id);
+                var typeCastRecord = new Decanato();
+                typeCastRecord.Nombre = foundRecord.Nombre;
+                typeCastRecord.matricula = foundRecord.matricula;
+                typeCastRecord.campus = foundRecord.campus;
+                typeCastRecord.queja = foundRecord.queja1;
+                typeCastRecord.Fecha = foundRecord.fecha;
+                typeCastRecord.Estatus = "Activo";
 
+                db.Decanatoes.Add(typeCastRecord);
+                db.quejas.Remove(foundRecord);
+                db.SaveChanges();
+            }
+            return Redirect("/Complain/");
+        }
+        [HttpGet]
+        public ActionResult Mover4(int Id)
+        {
+            using (examenEntities db = new examenEntities())
+            {
+                var foundRecord = db.quejas.Find(Id);
+                var typeCastRecord = new Horario();
+                typeCastRecord.Nombre = foundRecord.Nombre;
+                typeCastRecord.matricula = foundRecord.matricula;
+                typeCastRecord.campus = foundRecord.campus;
+                typeCastRecord.queja = foundRecord.queja1;
+                typeCastRecord.Fecha = foundRecord.fecha;
+                typeCastRecord.Estatus = "Activo";
+
+                db.Horarios.Add(typeCastRecord);
+                db.quejas.Remove(foundRecord);
+                db.SaveChanges();
+            }
+            return Redirect("/Complain/");
+        }
+        [HttpGet]
+        public ActionResult Mover5(int Id)
+        {
+            using (examenEntities db = new examenEntities())
+            {
+                var foundRecord = db.quejas.Find(Id);
+                var typeCastRecord = new Equipo();
+                typeCastRecord.Nombre = foundRecord.Nombre;
+                typeCastRecord.matricula = foundRecord.matricula;
+                typeCastRecord.campus = foundRecord.campus;
+                typeCastRecord.queja = foundRecord.queja1;
+                typeCastRecord.Fecha = foundRecord.fecha;
+                typeCastRecord.Estatus = "Activo";
+
+                db.Equipoes.Add(typeCastRecord);
+                db.quejas.Remove(foundRecord);
+                db.SaveChanges();
+            }
+            return Redirect("/Complain/");
+        }
     }
 }

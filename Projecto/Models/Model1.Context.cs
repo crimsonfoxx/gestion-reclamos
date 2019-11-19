@@ -26,8 +26,10 @@ namespace Projecto.Models
         }
     
         public virtual DbSet<Estudiante> Estudiantes { get; set; }
-        public virtual DbSet<Profesore> Profesores { get; set; }
         public virtual DbSet<queja> quejas { get; set; }
-        public virtual DbSet<cascada> cascadas { get; set; }
+        public virtual DbSet<Decanato> Decanatoes { get; set; }
+        public virtual DbSet<Equipo> Equipoes { get; set; }
+        public virtual DbSet<EVA> EVAs { get; set; }
+        public virtual DbSet<Horario> Horarios { get; set; }
     }
 }

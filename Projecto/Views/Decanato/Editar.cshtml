@@ -1,0 +1,55 @@
+﻿@model Projecto.Models.ViewModels.Tabla4ViewModdel
+@{
+    ViewBag.Title = "Editar";
+}
+
+<h2>Editar</h2>
+
+@using (Html.BeginForm("Editar", "Decanato", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-12">
+            @Html.HiddenFor(d => d.Id)
+            <div>
+                @Html.LabelFor(d => d.Nombre)
+                @Html.TextBoxFor(d => d.Nombre, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.Nombre, null, new { @class = "red " })
+            </div>
+            <br />
+            <div>
+                @Html.LabelFor(d => d.Matricula)
+                @Html.TextBoxFor(d => d.Matricula, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.Matricula, null, new { @class = "red " })
+            </div>
+            <br />
+            <div>
+                @Html.LabelFor(d => d.Campus)
+                @Html.EnumDropDownListFor(d => d.Campus, new { @class = "form-control" })
+            </div>
+            <br />
+            <div>
+                @Html.LabelFor(d => d.Queja)
+                @Html.TextBoxFor(d => d.Queja, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.Queja, null, new { @class = "red " })
+            </div>
+            <br />
+            <div>
+                @Html.LabelFor(d => d.Fecha)<br />
+                @Html.EditorFor(d => d.Fecha, "", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(d => d.Fecha, null, new { @class = "red" })
+            </div>
+            <br />
+            <div>
+                @Html.LabelFor(d => d.Estatus)<br />
+                @Html.EditorFor(d => d.Estatus, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.Estatus, null, new { @class = "red" })
+            </div>
+            <br />
+            <div style="text-align:right">
+                <input value="Guardar" class="btn btn-primary" type="submit" />
+                <a href="~/Decanato/Index" class="btn btn-primary">Cancelar</a>
+            </div>
+        </div>
+    </div>
+}
+

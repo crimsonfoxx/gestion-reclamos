@@ -31,16 +31,12 @@
                             <li><a href="~/Complain/Index">Quejas</a></li>
                             <li><a href="~/Complain/Nuevo">Agregar Quejas</a></li>
                         </ul>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            Estudiantes
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="~/Students/Index">Estudiantes</a></li>
-                            <li><a href="~/Students/Nuevo">Agregar Quejas</a></li>
-                        </ul>                                     
-</ul>
+                    <li>@Html.ActionLink("Profesores", "Index", "Students")</li>
+                    <li>@Html.ActionLink("Plataforma Virtual", "Index", "EVA")</li>
+                    <li>@Html.ActionLink("Decanato", "Index", "Decanato")</li>
+                    <li>@Html.ActionLink("Horarios", "Index", "Horarios")</li>
+                    <li>@Html.ActionLink("Equipo", "Index", "Equipo")</li>
+                </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
@@ -49,13 +45,14 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Proyecto para el Examen</p>
         </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/fontawesome")
     @RenderSection("scripts", required: false)
 </body>
 </html>
