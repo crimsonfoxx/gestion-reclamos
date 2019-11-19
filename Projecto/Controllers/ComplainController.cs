@@ -35,12 +35,12 @@ namespace Projecto.Controllers
 
         public ActionResult Nuevo()
         {
-            return View(new ComplainViewModel());
+            return View();
         }
 
 
         [HttpPost]
-        public ActionResult Nuevo(ComplainViewModel model)
+        public ActionResult Nuevo(TablaViewModel model)
         {
             try
             {
@@ -48,13 +48,6 @@ namespace Projecto.Controllers
                 {
                     using (examenEntities db = new examenEntities())
                     {
-                        var query = db.quejas
-                        .Where(s => s.Nombre == model.Nombre);
-                        if (query.Any())
-                        {
-                            ViewBag.ErrorMessage = "Entry with name already exists";
-                            return View();
-                        }
                         var oTabla = new queja();
                         oTabla.Nombre = model.Nombre;
                         oTabla.matricula = model.Matricula;
@@ -76,12 +69,9 @@ namespace Projecto.Controllers
             }
         }
 
-
-        // https://stackoverflow.com/questions/54026020/asp-net-core-2-1-razor-form-post-not-reaching-controller
-        [HttpGet]
         public ActionResult Editar(int Id)
         {
-            ComplainViewModel model = new ComplainViewModel();
+            TablaViewModel model = new TablaViewModel();
             using (examenEntities db = new examenEntities())
             {
                 var oTabla = db.quejas.Find(Id);
@@ -92,12 +82,12 @@ namespace Projecto.Controllers
                 model.Fecha = oTabla.fecha;
                 model.Id = oTabla.Id;
             }
-            return View(model);
+                return View();
         }
 
 
         [HttpPost]
-        public ActionResult Editar(ComplainViewModel model)
+        public ActionResult Editar(TablaViewModel model)
         {
             try
             {
@@ -105,15 +95,6 @@ namespace Projecto.Controllers
                 {
                     using (examenEntities db = new examenEntities())
                     {
-                        var query = db.quejas
-                        .Where(s => s.Nombre == model.Nombre);
-
-                        // https://www.entityframeworktutorial.net/Querying-with-EDM.aspx
-                        if (query.Any())
-                        {
-                            ViewBag.ErrorMessage = "Entry with name already exists";
-                            return View();
-                        }
                         var oTabla = db.quejas.Find(model.Id);
                         oTabla.Nombre = model.Nombre;
                         oTabla.matricula = model.Matricula;
@@ -148,31 +129,7 @@ namespace Projecto.Controllers
             return Redirect("/Complain/");
         }
 
-        [HttpGet]
-        public ActionResult Mover(int Id)
-        {
-            using (examenEntities db = new examenEntities())
-            {
-                var foundRecord = db.quejas.Find(Id);
-
-                var typeCastRecord = new Estudiante();
-                typeCastRecord.Nombre = foundRecord.Nombre;
-                typeCastRecord.matricula = foundRecord.matricula;
-                typeCastRecord.campus = foundRecord.campus;
-                typeCastRecord.queja = foundRecord.queja1;
-                typeCastRecord.Fecha = foundRecord.fecha;
-                typeCastRecord.Estatus = "Activo";
-
-                db.Estudiantes.Add(typeCastRecord);
-                db.quejas.Remove(foundRecord);
-                db.SaveChanges();
-
-            }
-            return Redirect("/Complain/");
-        }
-
-
-
+       
 
     }
 }

@@ -34,12 +34,12 @@ namespace Projecto.Controllers
 
         public ActionResult Nuevo()
         {
-            return View(new StudentsViewModel());
+            return View();
         }
 
 
         [HttpPost]
-        public ActionResult Nuevo(StudentsViewModel model)
+        public ActionResult Nuevo(Tabla2ViewModel model)
         {
             try
             {
@@ -47,14 +47,6 @@ namespace Projecto.Controllers
                 {
                     using (examenEntities db = new examenEntities())
                     {
-                        var query = db.Estudiantes
-                        .Where(s => s.Nombre == model.Nombre);
-                        if (query.Any())
-                        {
-                            ViewBag.ErrorMessage = "Entry with name already exists";
-                            return View();
-                        }
-
                         var oTabla = new Estudiante();
                         oTabla.Nombre = model.Nombre;
                         oTabla.matricula = model.Matricula;
@@ -77,14 +69,12 @@ namespace Projecto.Controllers
             }
         }
 
-        [HttpGet]
         public ActionResult Editar(int Id)
         {
-            StudentsViewModel model = new StudentsViewModel();
-            Estudiante oTabla;
+            Tabla2ViewModel model = new Tabla2ViewModel();
             using (examenEntities db = new examenEntities())
             {
-                oTabla = db.Estudiantes.Find(Id);
+                var oTabla = db.Estudiantes.Find(Id);
                 model.Nombre = oTabla.Nombre;
                 model.Matricula = oTabla.matricula;
                 model.Campus = oTabla.campus;
@@ -93,12 +83,12 @@ namespace Projecto.Controllers
                 model.Estatus = oTabla.Estatus;
                 model.Id = oTabla.Id;
             }
-            return View(model);
+            return View();
         }
 
 
         [HttpPost]
-        public ActionResult Editar(StudentsViewModel model)
+        public ActionResult Editar(Tabla2ViewModel model)
         {
             try
             {
@@ -106,13 +96,6 @@ namespace Projecto.Controllers
                 {
                     using (examenEntities db = new examenEntities())
                     {
-                        var query = db.Estudiantes
-                        .Where(s => s.Nombre == model.Nombre);
-                        if (query.Any())
-                        {
-                            ViewBag.ErrorMessage = "Entry with name already exists";
-                            return View();
-                        }
                         var oTabla = db.Estudiantes.Find(model.Id);
                         oTabla.Nombre = model.Nombre;
                         oTabla.matricula = model.Matricula;

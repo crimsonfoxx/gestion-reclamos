@@ -1,4 +1,4 @@
-﻿@model Projecto.Models.ViewModels.ComplainViewModel
+﻿@model Projecto.Models.ViewModels.TablaViewModel
     @using Projecto.Models
 @{
     ViewBag.Title = "Editar";
@@ -24,20 +24,10 @@
             </div>
             <br />
             <div>
-                @Html.LabelFor(d => d.Campus)<br />
-                @Html.RadioButtonFor(d => d.Campus, 1)
-                <span>Campus 1</span><br />
-
-                @Html.RadioButtonFor(d => d.Campus, 2)
-                <span>Campus 2</span><br />
-
+                @Html.LabelFor(d => d.Campus)
+                @Html.TextBoxFor(d => d.Campus, "", new { @class = "form-control" })
                 @Html.ValidationMessageFor(d => d.Campus, null, new { @class = "red " })
             </div>
-            @*<div>
-            @Html.LabelFor(d => d.Campus)
-            @Html.TextBoxFor(d => d.Campus, "", new { @class = "form-control" })
-            @Html.ValidationMessageFor(d => d.Campus, null, new { @class = "red " })
-        </div>*@
             <br />
             <div>
                 @Html.LabelFor(d => d.Queja)
@@ -47,21 +37,13 @@
             <br />
             <div>
                 @Html.LabelFor(d => d.Fecha)<br />
-                @Html.TextBoxFor(d => d.Fecha, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" })
-                @*@Html.EditorFor(d => d.Fecha, "", new { @class = "form-control" })*@
-                @*@Html.TextBoxFor(d => d.Fecha, new { @id = "Datepicker", @Value = Model.Fecha.ToString("MM/dd/yyyy") })*@
+                @Html.EditorFor(d => d.Fecha, "", new { @class = "form-control" })
                 @Html.ValidationMessageFor(d => d.Fecha, null, new { @class = "red" })
-            </div>
-            <div>
-                @if (ViewBag.ErrorMessage != null)
-                {
-                    <h3 style="color:red">@ViewBag.ErrorMessage</h3>
-                }
             </div>
             <br />
             <div style="text-align:right">
-                <input value="Guardar" class="btn btn-primary" type="submit" />
-                <a href="~/Complain/Index" class="btn btn-primary">Cancelar</a>
+                <input value="Guardar" class="btn btn-primary" type="submit"/>
+                <a href="~/Complain/Index"class="btn btn-primary">Cancelar</a>
             </div>
         </div>
     </div>
